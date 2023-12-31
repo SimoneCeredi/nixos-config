@@ -4,6 +4,7 @@
   [
     ../../system/hardware-configuration.nix
     ../../system/hardware
+    ../../system/keyboard
     (./. + "../../../system/wm"+("/"+wm)+".nix") # My window manager
   ];
 
