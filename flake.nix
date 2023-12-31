@@ -36,7 +36,7 @@
     # configure lib
     lib = nixpkgs.lib;
   in {
-      homeConfiguration = {
+      homeConfigurations = {
         user = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           modules = [ (./. + "/profiles"+("/"+profile)+"/home.nix") ]; # load home.nix from selected PROFILE

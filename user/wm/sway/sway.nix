@@ -10,6 +10,7 @@ let
 in
 {
   imports = [
+    ./mixins/cursor.nix
     ./mixins/i3status.nix
     ./mixins/mako.nix
     ./mixins/sway.nix
