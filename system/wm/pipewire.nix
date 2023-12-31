@@ -1,5 +1,3 @@
-{ config, pkgs, ... }:
-
 {
   # Pipewire
   security.rtkit.enable = true;

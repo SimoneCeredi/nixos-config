@@ -1,40 +1,31 @@
-{ config, lib, pkgs, stylix, username, email, dotfilesDir, theme, wm, browser, editor, spawnEditor, term, ... }:
+{ config, lib, pkgs, username, name, hostname, profile, email, wm, wmType, ...}:
 {
   home.username = username;
-  home.homeDirectory = "/home/"+username;
-
+  home.homeDirectory = "/home/" + username;
+  
   programs.home-manager.enable = true;
 
-  imports = [
-    ../../user/shell/sh.nix
-    ../../user/shell/cli-collection.nix
-    ../../user/app/neovim/neovim.nix
-    ../../user/app/vscode/vscode.nix
-    ../../user/app/git/git.nix
-    ../../user/app/virtualization/virtualization.nix
-    ../../user/app/flatpak/flatpak.nix
-    ../../user/lang/cc/cc.nix
-    ../../user/lang/node/node.nix
-    ../../user/lang/ruby/ruby.nix
-    ../../user/hardware/bluetooth.nix
+  imports = 
+  [
+    ../../user/hardware/bluetooth.nix # Bluetooth
+    ../../user/shell/sh.nix # My zsh and bash config
+    ../../user/shell/cli-collection.nix # Useful CLI apps
     (./. + "../../../user/wm"+("/"+wm+"/"+wm)+".nix") # My window manager selected from flake
+    
   ];
 
-  home.stateVersion = "23.11";
-
   home.packages = with pkgs; [
-    zsh
+    neovim
+    vim
     kitty
     alacritty
     firefox
-    brave
-    git
-    libreoffice-fresh
-    okular
-    dolphin
-    gimp-with-plugins
+    zsh
+    gnome.nautilus
   ];
-  
+
+  services.syncthing.enable = true;
+
   xdg.enable = true;
   xdg.userDirs = {
     enable = true;
@@ -58,11 +49,11 @@
   };
 
   home.sessionVariables = {
-    EDITOR = editor;
-    SPAWNEDITOR = spawnEditor;
-    TERM = term;
-    BROWSER = browser;
-    NIXPKGS_ALLOW_UNFREE = 1;
-
+    EDITOR = "nvim";
+    SPAWNEDITOR = "exec kitty -e nvim";
+    TERM = "kitty";
+    BROWSER = "firefox";
   };
+
+  home.stateVersion = "23.11";
 }

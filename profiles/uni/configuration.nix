@@ -1,23 +1,13 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ config, lib, pkgs, username, name, hostname, timezone, locale, wm, theme, ... }:
+{ config, lib, pkgs, username, name, hostname, timezone, locale, wm, ... }:
 {
-  imports = [
+  imports = 
+  [
     ../../system/hardware-configuration.nix
-    ../../system/hardware/bluetooth.nix
-    # ( import ../../system/app/docker.nix {storageDriver = "btrfs"; inherit username pkgs config lib;} )
-    ../../system/app/virtualization.nix
-    ../../system/keyboard/layout.nix
+    ../../system/hardware
     (./. + "../../../system/wm"+("/"+wm)+".nix") # My window manager
   ];
-  # # TODO remove, temporary solution to have kde while setting up mu wm 
-  # services.xserver.enable = true;
-  # services.xserver.displayManager.sddm.enable = true;
-  # services.xserver.desktopManager.plasma5.enable = true;
 
-  # Ensure nix flakes are enabled
+   # Ensure nix flakes are enabled
   nix.package = pkgs.nixFlakes;
   nix.extraOptions = ''
     experimental-features = nix-command flakes
@@ -58,7 +48,7 @@
     uid = 1000;
   };
 
-   # System packages
+  # System packages
   environment.systemPackages = with pkgs; [
     vim
     wget
@@ -85,4 +75,5 @@
 
   # It is ok to leave this unchanged for compatibility purposes
   system.stateVersion = "23.11";
+
 }

@@ -8,3 +8,4 @@
     blueman-applet.enable = true;
   };
 }
+
