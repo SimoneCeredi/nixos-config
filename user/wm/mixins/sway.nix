@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, inputs, username, ... }:
 
 let
   # swayfont = "Iosevka Bold 9";
@@ -88,7 +88,7 @@ in
           "${modifier}+Shift+r" = "reload";
           "${modifier}+t" = "layout toggle tabbed split";
 
-          "${modifier}+d" = "exec ${dropdownTerminalCmd}";
+          "${modifier}+Shift+d" = "exec ${dropdownTerminalCmd}";
 
           "${modifier}+h" = "focus left";
           "${modifier}+j" = "focus down";
@@ -114,7 +114,7 @@ in
           "${modifier}+b" = "splith";
           "${modifier}+v" = "splitv";
           "${modifier}+f" = "fullscreen toggle";
-          "${modifier}+space" = "floating toggle";
+          "${modifier}+Shift+space" = "floating toggle";
           "${modifier}+w" = "sticky toggle";
           "${modifier}+a" = "focus parent";
           "${modifier}+d" = "exec ${launcher}";

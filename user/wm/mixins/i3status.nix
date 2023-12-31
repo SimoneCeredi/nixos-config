@@ -6,11 +6,6 @@
       top = {
         blocks = [
           {
-            block = "custom";
-            command = "${pkgs.rsstail}/bin/rsstail rsstail -n 1 -1 -N -u https://github.com/nixos/nixpkgs/commits/master.atom";
-            interval = 60;
-          }
-          {
             block = "memory";
             format = " $icon $mem_used_percents ";
             format_alt = " $icon $swap_used_percents ";

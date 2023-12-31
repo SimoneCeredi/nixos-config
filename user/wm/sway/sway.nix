@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, username, ... }:
 let
   bemenuAskpass = pkgs.writeShellScript "bemenuAskpass.sh" ''
     ${pkgs.bemenu}/bin/bemenu \
@@ -10,36 +10,18 @@ let
 in
 {
   imports = [
-    ./mixins/cursor.nix
-    ./mixins/i3status.nix
-    ./mixins/mako.nix
-    ./mixins/sway.nix
-    ./mixins/wlsunset.nix
+    ../mixins/cursor.nix
+    ../mixins/i3status.nix
+    ../mixins/mako.nix
+    ../mixins/sway.nix
+    ../mixins/wlsunset.nix
   ];
+
+
   config = {
-    services.dbus.packages = with pkgs; [ dconf ];
-    programs.light.enable = true;
-
-    xdg = {
-      portal = {
-        enable = true;
-        extraPortals = with pkgs; [
-          xdg-desktop-portal-wlr
-          xdg-desktop-portal-gtk
-        ];
-      };
-    };
-
-    # The NixOS option 'programs.sway.enable' is needed to make swaylock work,
-    # since home-manager can't set PAM up to allow unlocks, along with some
-    # other quirks.
-    programs.sway.enable = true;
-
-    fonts.fonts = with pkgs; [ terminus_font_ttf font-awesome ];
-
-  # Block auto-sway reload, Sway crashes if allowed to reload this way.
+# Block auto-sway reload, Sway crashes if allowed to reload this way.
     xdg.configFile."sway/config".onChange = lib.mkForce "";
-  
+
     home.sessionVariables = {
       SSH_ASKPASS="${bemenuAskpass}";
       MOZ_ENABLE_WAYLAND = "1";

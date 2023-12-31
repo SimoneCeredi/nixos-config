@@ -40,6 +40,10 @@
     LC_TIME = locale;
   };
 
+  environment.sessionVariables  = {
+    WLR_NO_HARDWARE_CURSORS = "1";
+  };
+
   # User account
   users.users.${username} = {
     isNormalUser = true;

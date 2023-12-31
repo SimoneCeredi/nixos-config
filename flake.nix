@@ -22,8 +22,8 @@
     username = "simone"; # username
     name = "SimoneCeredi"; # name/identifier
     email = "ceredi.simone.iti@gmail.com"; # email (used for certain configurations)
-    wm = "sway"; # Selected window manager or desktop environment; must select one in both ./user/wm/ and ./system/wm/
-    wmType = "wayland"; # x11 or wayland
+    wm = "i3"; # Selected window manager or desktop environment; must select one in both ./user/wm/ and ./system/wm/
+    wmType = "x11"; # x11 or wayland
 
     # configure pkgs
     pkgs = import nixpkgs {
