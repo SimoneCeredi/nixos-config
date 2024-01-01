@@ -10,6 +10,7 @@
     ../../user/hardware/bluetooth.nix # Bluetooth
     ../../user/shell/sh.nix # My zsh and bash config
     ../../user/shell/cli-collection.nix # Useful CLI apps
+    ../../user/app
     (./. + "../../../user/wm"+("/"+wm+"/"+wm)+".nix") # My window manager selected from flake
     
   ];

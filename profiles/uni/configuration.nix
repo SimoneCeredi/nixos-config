@@ -6,6 +6,7 @@
     ../../system/hardware
     ../../system/keyboard
     (./. + "../../../system/wm"+("/"+wm)+".nix") # My window manager
+    ( import ../../system/app/docker.nix {storageDriver = "btrfs"; inherit username pkgs config lib;} )
   ];
 
    # Ensure nix flakes are enabled
@@ -76,6 +77,12 @@
       pkgs.xdg-desktop-portal
       pkgs.xdg-desktop-portal-gtk
     ];
+  };
+
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 7d";
   };
 
   # It is ok to leave this unchanged for compatibility purposes
