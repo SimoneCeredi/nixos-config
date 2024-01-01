@@ -1,6 +1,7 @@
 {
-  includes = 
+  imports = 
   [
     ./git.nix
+   ./ide/nvim
   ];
 }
