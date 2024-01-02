@@ -21,6 +21,6 @@
     fzf
     pandoc
     pciutils
-    vim neovim vscode
+    vim vscode
   ];
 }
