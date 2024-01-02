@@ -1,0 +1,6 @@
+{
+  imports = 
+  [
+    ./kanshi.nix
+  ];
+}

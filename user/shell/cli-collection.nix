@@ -11,7 +11,6 @@
     libnotify
     bat eza fd bottom ripgrep
     rsync
-    tmux
     htop
     hwinfo
     unzip
