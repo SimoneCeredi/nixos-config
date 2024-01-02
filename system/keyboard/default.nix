@@ -12,7 +12,8 @@
   };
 
   services.xserver = {
-    layout = "us-but-better,real-prog-qwerty";
+    enable = true;
+    layout = "real-prog-qwerty,us-but-better";
     xkbOptions = "grp:win_space_toggle";
   };
 
